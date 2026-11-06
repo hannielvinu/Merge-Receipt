@@ -1,0 +1,17 @@
+{
+  "name": "merge-receipt",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "replay": "node src/cli.mjs",
+    "agent": "node src/agent.mjs"
+  },
+  "dependencies": {
+    "ws": "8.22.1"
+  }
+}

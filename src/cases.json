@@ -1,0 +1,94 @@
+[
+  {
+    "id": "LU-1638",
+    "repo": "learn-ukrainian/learn-ukrainian.github.io",
+    "pull": 1638,
+    "base": "7dfdbeaca72f46d53720040993d5907040bb05dc",
+    "check": "Test (pytest)",
+    "policyIssue": 1641,
+    "workflow": ".github/workflows/ci.yml",
+    "event": "pull_request",
+    "files": [
+      "scripts/build/v7_build.py",
+      "tests/build/test_v7_build_e2e.py"
+    ],
+    "patterns": [
+      ".github/workflows/ci.yml",
+      "requirements*.txt",
+      "requirements.lock",
+      "scripts/**/*.py",
+      "tests/**/*.py",
+      "pyproject.toml",
+      "claude_extensions/**",
+      "gemini_extensions/**",
+      "scripts/build/phases/**/*.md",
+      "scripts/build/contracts/**/*.md",
+      "docs/lesson-contract.md",
+      "docs/lesson-schema.yaml",
+      "starlight/**"
+    ]
+  },
+  {
+    "id": "LU-1640",
+    "repo": "learn-ukrainian/learn-ukrainian.github.io",
+    "pull": 1640,
+    "base": "5377f5d577a9fe218f879d6636213a0a5717a758",
+    "check": "Test (pytest)",
+    "policyIssue": 1641,
+    "workflow": ".github/workflows/ci.yml",
+    "event": "pull_request",
+    "files": [
+      "AGENTS.md",
+      "GEMINI.md",
+      "docs/agent-channels/shared/context.md",
+      "docs/best-practices/agent-cooperation.md",
+      "docs/decisions/pending/README.md"
+    ],
+    "patterns": [
+      ".github/workflows/ci.yml",
+      "requirements*.txt",
+      "requirements.lock",
+      "scripts/**/*.py",
+      "tests/**/*.py",
+      "pyproject.toml",
+      "claude_extensions/**",
+      "gemini_extensions/**",
+      "scripts/build/phases/**/*.md",
+      "scripts/build/contracts/**/*.md",
+      "docs/lesson-contract.md",
+      "docs/lesson-schema.yaml",
+      "starlight/**"
+    ]
+  },
+  {
+    "id": "LU-1642",
+    "repo": "learn-ukrainian/learn-ukrainian.github.io",
+    "pull": 1642,
+    "base": "a33eff5951908143d1efd1dd2e680d7342ea1eef",
+    "check": "Test (pytest)",
+    "policyIssue": 1641,
+    "workflow": ".github/workflows/ci.yml",
+    "event": "pull_request",
+    "files": [
+      "AGENTS.md",
+      "GEMINI.md",
+      "docs/agent-channels/shared/context.md",
+      "docs/best-practices/agent-cooperation.md"
+    ],
+    "patterns": [
+      ".github/workflows/ci.yml",
+      "requirements*.txt",
+      "requirements.lock",
+      "scripts/**/*.py",
+      "tests/**/*.py",
+      "pyproject.toml",
+      "claude_extensions/**",
+      "gemini_extensions/**",
+      "scripts/build/phases/**/*.md",
+      "scripts/build/contracts/**/*.md",
+      "docs/lesson-contract.md",
+      "docs/lesson-schema.yaml",
+      "starlight/**"
+    ]
+  }
+]

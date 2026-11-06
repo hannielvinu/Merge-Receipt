@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0e1520; color: #f1f6f9; }
+body { margin: 0; }
+main { width: min(1060px, calc(100% - 2rem)); margin-inline: auto; }
+a { color: #a6ddd4; text-underline-offset: 3px; }
+a:hover { color: #e4fff9; }
+.mast { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid #2c3b4b; }
+.brand { font-size: 1.2rem; font-weight: 750; color: #f1f6f9; text-decoration: none; }
+.hero { padding: clamp(2.2rem, 6vw, 4rem) 0 2.25rem; }
+.label { font: 700 .75rem ui-monospace, monospace; letter-spacing: .13em; color: #a6ddd4; }
+h1 { margin: .65rem 0; max-width: 18ch; font-size: clamp(2.6rem, 6.2vw, 5rem); letter-spacing: -.065em; line-height: .99; }
+p { color: #bbcad7; line-height: 1.6; }
+.hero p:last-child { max-width: 58ch; }
+.replay { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.35fr); border: 1px solid #304454; border-radius: 16px; overflow: hidden; background: #141f2b; }
+.cases, .result { padding: clamp(1.15rem, 4vw, 2.1rem); }
+.result { border-left: 1px solid #304454; background: #172432; }
+h2 { margin: .5rem 0; font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.035em; }
+h3 { font-size: .95rem; }
+button { display: block; width: 100%; margin: .6rem 0; padding: .8rem .7rem; text-align: left; font: inherit; color: #f1f6f9; background: #192836; border: 1px solid #4e6475; border-radius: 8px; cursor: pointer; }
+button:hover, button[aria-pressed="true"] { border-color: #7fe4d2; background: #213c43; }
+:focus-visible { outline: 3px solid #a6ddd4; outline-offset: 3px; }
+[data-status="FILTERED_OUT"] { color: #ffbe92; }
+[data-status="PATH_MATCHED"] { color: #8ce6cf; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem .85rem; }
+dt { color: #bbcad7; }
+dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+li { display: flex; gap: .65rem; align-items: baseline; border-top: 1px solid #304454; padding: .6rem 0; }
+li code { overflow-wrap: anywhere; }
+li span { font: 700 .67rem ui-monospace, monospace; min-width: 4.7rem; }
+.excluded { color: #ffbe92; }
+.matched { color: #8ce6cf; }
+.sources { display: flex; flex-wrap: wrap; gap: .75rem; font-size: .88rem; }
+footer { padding: 1.4rem 0; color: #bbcad7; line-height: 1.6; }
+@media (max-width: 680px) {
+  .replay { grid-template-columns: 1fr; }
+  .result { border-left: 0; border-top: 1px solid #304454; }
+}

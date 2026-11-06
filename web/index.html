@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Replay a real missing GitHub Actions check against its historical workflow.">
+  <title>Merge Receipt · Public replay</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header class="mast">
+      <a class="brand" href="./">Merge Receipt</a>
+      <a href="https://github.com/hannielvinu/Merge-Receipt">Source and setup ↗</a>
+    </header>
+    <section class="hero" aria-labelledby="title">
+      <p class="label">FLIP THE SWITCH / BUSINESS WORKFLOW</p>
+      <h1 id="title">Why did the required<br> check never run?</h1>
+      <p>Compare real pull request files with the workflow that was in force. The Switch agent uses the same evaluator to bring the evidence and a maintainer decision into the team’s chat.</p>
+    </section>
+    <section class="replay" aria-labelledby="replay-title">
+      <div class="cases">
+        <p class="label">01 / SELECT INPUT</p>
+        <h2 id="replay-title">Historical replay</h2>
+        <p>Learn Ukrainian, May 2026. Choose a case to evaluate.</p>
+        <div id="cases"></div>
+      </div>
+      <div class="result" aria-live="polite">
+        <p class="label">02 / INSPECT RECEIPT</p>
+        <h2 id="status">Loading case…</h2>
+        <p id="result-detail"></p>
+        <div id="evidence" hidden>
+          <dl><dt>Required check</dt><dd id="check"></dd><dt>Historical base</dt><dd><code id="base"></code></dd></dl>
+          <h3>Changed paths</h3>
+          <ul id="paths"></ul>
+          <div class="sources" id="sources"></div>
+        </div>
+      </div>
+    </section>
+    <footer>Public replay only. The team decision runs in a configured Switch room. <a href="https://github.com/hannielvinu/Merge-Receipt#run-in-a-switch-room">Run the chat workflow ↗</a></footer>
+  </main>
+</body>
+</html>
