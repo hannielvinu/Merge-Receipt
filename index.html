@@ -3,42 +3,113 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Replay a real missing GitHub Actions check against its historical workflow.">
-  <title>Merge Receipt · Public replay</title>
+  <meta name="theme-color" content="#171526">
+  <meta name="description" content="Replay a missing GitHub Actions check, inspect the evidence, and test paths against the pinned workflow.">
+  <title>Merge Receipt — CI investigation desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./" aria-label="Merge Receipt home"><span class="brand-icon" aria-hidden="true">↳</span> Merge Receipt</a>
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#workspace">Replay</a>
+        <a class="nav-link" href="#workflow">Workflow</a>
+        <a class="repo" href="https://github.com/hannielvinu/Merge-Receipt">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
   <main>
-    <header class="mast">
-      <a class="brand" href="./">Merge Receipt</a>
-      <a href="https://github.com/hannielvinu/Merge-Receipt">Source and setup ↗</a>
-    </header>
-    <section class="hero" aria-labelledby="title">
-      <p class="label">FLIP THE SWITCH / BUSINESS WORKFLOW</p>
-      <h1 id="title">Why did the required<br> check never run?</h1>
-      <p>Compare real pull request files with the workflow that was in force. The Switch agent uses the same evaluator to bring the evidence and a maintainer decision into the team’s chat.</p>
-    </section>
-    <section class="replay" aria-labelledby="replay-title">
-      <div class="cases">
-        <p class="label">01 / SELECT INPUT</p>
-        <h2 id="replay-title">Historical replay</h2>
-        <p>Learn Ukrainian, May 2026. Choose a case to evaluate.</p>
-        <div id="cases"></div>
+    <section class="hero wrap" aria-labelledby="title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> FLIP THE SWITCH / BUSINESS WORKFLOW</p>
+        <h1 id="title">The check<br>that <em>never ran.</em></h1>
+        <p class="intro">Replay a real GitHub Actions blocker. Trace the missing check to the rule that excluded it, then see how the team decides what to do in Switch.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#workspace">Open investigation <span aria-hidden="true">↓</span></a>
+          <a class="quiet" href="#workflow">See the chat workflow <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-      <div class="result" aria-live="polite">
-        <p class="label">02 / INSPECT RECEIPT</p>
-        <h2 id="status">Loading case…</h2>
-        <p id="result-detail"></p>
-        <div id="evidence" hidden>
-          <dl><dt>Required check</dt><dd id="check"></dd><dt>Historical base</dt><dd><code id="base"></code></dd></dl>
-          <h3>Changed paths</h3>
-          <ul id="paths"></ul>
-          <div class="sources" id="sources"></div>
+      <div class="hero-proof" aria-label="Preview of the historical blocked case">
+        <div class="proof-top"><span>INVESTIGATION / #1640</span><span class="proof-live">HISTORICAL REPLAY</span></div>
+        <div class="proof-inner">
+          <p class="proof-label"><span aria-hidden="true">◉</span> REQUIRED CHECK</p>
+          <strong>Test (pytest)</strong>
+          <div class="proof-metric"><span>0<span>/</span>5</span><small>changed paths<br>matched the trigger</small></div>
+          <div class="proof-trace"><span>PR files</span><i aria-hidden="true">→</i><span>Path filter</span><i aria-hidden="true">→</i><b>Filtered out</b></div>
+        </div>
+        <div class="proof-footer"><span>PINNED BASE</span><code>5377f5d577a9</code><span>READ-ONLY</span></div>
+      </div>
+    </section>
+
+    <section class="workspace wrap" id="workspace" aria-labelledby="workspace-title">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / INTERACTIVE REPLAY</p><h2 id="workspace-title">Investigation desk</h2></div>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Public evidence · Runs in browser</span>
+      </div>
+      <div class="desk">
+        <aside class="case-panel" aria-label="Investigation cases">
+          <p class="micro">CASE LIBRARY</p>
+          <div id="cases" class="cases"></div>
+          <div class="case-note"><strong>One project. Three real PRs.</strong><p>The code-change control shows what the same filter allows.</p></div>
+        </aside>
+        <div class="receipt">
+          <div class="receipt-top">
+            <span class="micro" id="case-ref">RECEIPT / LOADING</span>
+            <button id="copy" class="small-btn" type="button" disabled><span aria-hidden="true">▣</span> Copy receipt</button>
+          </div>
+          <div class="verdict" id="verdict" aria-live="polite">
+            <div><span id="result-tag" class="result-tag">LOADING</span><h3 id="status">Loading evidence…</h3><p id="result-detail"></p></div>
+            <div class="metric" id="metric" hidden><strong id="score"></strong><span>PATHS MATCHED</span></div>
+          </div>
+          <div id="evidence" hidden>
+            <div class="facts">
+              <div><span>REQUIRED CHECK</span><strong id="check"></strong></div>
+              <div><span>PINNED BASE SHA</span><code id="base"></code></div>
+              <div><span>WORKFLOW EVENT</span><code>pull_request</code></div>
+            </div>
+            <div class="tools" aria-label="Evidence views">
+              <button type="button" data-view="paths" aria-pressed="true">Changed paths</button>
+              <button type="button" data-view="rules" aria-pressed="false">Trigger rules</button>
+              <button type="button" data-view="lab" aria-pressed="false">What-if lab</button>
+            </div>
+            <section id="view-paths" class="view" aria-label="Changed paths">
+              <div class="list-top"><strong>Path comparison</strong><label>Show <select id="path-filter"><option value="all">All paths</option><option value="matched">Matched</option><option value="excluded">Excluded</option></select></label></div>
+              <ul id="paths" class="paths"></ul>
+            </section>
+            <section id="view-rules" class="view" aria-label="Trigger rules" hidden>
+              <div class="list-top"><strong>Historical trigger patterns</strong><span class="micro">PULL_REQUEST.PATHS</span></div>
+              <ul id="rules" class="rules"></ul>
+            </section>
+            <section id="view-lab" class="view" aria-label="What-if lab" hidden>
+              <form id="lab">
+                <label for="input-paths"><strong>Test a different file list</strong></label>
+                <p>The selected case’s pinned trigger stays fixed. Paste repository-relative paths, one per line.</p>
+                <textarea id="input-paths" rows="4" required maxlength="15000" spellcheck="false"></textarea>
+                <div class="lab-actions"><button type="submit" class="primary">Evaluate paths <span aria-hidden="true">→</span></button><button id="reset" type="button" class="small-btn">Reset to archive</button></div>
+                <p id="lab-error" role="alert"></p>
+              </form>
+            </section>
+            <div class="sources"><span class="micro">SOURCE TRAIL</span><div id="sources"></div></div>
+          </div>
+          <p id="copy-status" class="sr-only" aria-live="polite"></p>
         </div>
       </div>
     </section>
-    <footer>Public replay only. The team decision runs in a configured Switch room. <a href="https://github.com/hannielvinu/Merge-Receipt#run-in-a-switch-room">Run the chat workflow ↗</a></footer>
+    <section class="workflow wrap" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-head"><div><p class="eyebrow">02 / SWITCH WORKFLOW</p><h2 id="workflow-title">From a question to a decision.</h2></div></div>
+      <div class="steps">
+        <article><span class="step-num">01</span><h3>Ask in Mattermost</h3><p>Tag Merge Receipt about a missing check. Switch forwards the message from the channel.</p></article>
+        <article><span class="step-num">02</span><h3>Inspect the proof</h3><p>Codex routes the request. The same evaluator used here checks the files and posts evidence in the thread.</p></article>
+        <article><span class="step-num">03</span><h3>Record the hold</h3><p>The maintainer decides. The agent records the hold and owner in the same conversation.</p></article>
+      </div>
+      <a class="quiet" href="https://github.com/hannielvinu/Merge-Receipt#run-in-a-switch-room">Run the full chat workflow <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
+  <footer><div class="wrap foot"><strong>Merge Receipt</strong><span>Historical GitHub evidence. Live chat runs in your Switch room.</span><a href="https://github.com/hannielvinu/Merge-Receipt/blob/main/docs/live-run.md">Verified run ↗</a></div></footer>
 </body>
 </html>
