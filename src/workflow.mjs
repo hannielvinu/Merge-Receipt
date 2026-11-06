@@ -50,7 +50,7 @@ export function roomWorkflow(cases, identifyCase, mention = 'merge-receipt') {
     const result = diagnose(cases.find(entry => entry.id === id));
     return {
       root,
-      body: formatDiagnosis(result) + (interpreted ? '\n\nRequest routed by Codex. Path comparison is deterministic.' : ''),
+      body: formatDiagnosis(result, mention) + (interpreted ? '\n\nRequest routed by Codex. Path comparison is deterministic.' : ''),
       delivered: result.status === 'FILTERED_OUT' ? () => {
         if (pending.size >= MAX_PENDING) pending.delete(pending.keys().next().value);
         pending.set(JSON.stringify([root, payload.sender, result.caseId]), Date.now());

@@ -49,7 +49,7 @@ export function diagnose(entry) {
   };
 }
 
-export function formatDiagnosis(result) {
+export function formatDiagnosis(result, mention = 'merge-receipt') {
   if (result.status === 'INSUFFICIENT_EVIDENCE') {
     return '**INSUFFICIENT_EVIDENCE** · No supported, pinned case found. Try LU-1640, LU-1642 or LU-1638.';
   }
@@ -66,7 +66,8 @@ export function formatDiagnosis(result) {
     '[Changed files](' + result.sources.pull + ') · [Pinned workflow](' + result.sources.workflow
       + ') · [Reported required check](' + result.sources.policy + ')',
     result.status === 'FILTERED_OUT'
-      ? 'To record a hold, reply with `hold ' + result.caseId + '`. Use `investigate ' + result.caseId + '` to request more evidence.'
+      ? 'In this thread, reply with `@' + mention + ' hold ' + result.caseId
+        + '` to record a hold, or `@' + mention + ' investigate ' + result.caseId + '` to request more evidence.'
       : 'Historical replay · this result does not grant merge approval.',
   ].join('\n\n');
 }
