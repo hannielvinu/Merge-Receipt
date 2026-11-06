@@ -4,7 +4,7 @@
 
 Merge Receipt is a Flip the Switch **Best Business Workflow** entry for release maintainers. A maintainer asks in a Mattermost channel why CI is waiting. Switch delivers the request to the Merge Receipt agent. Codex can route natural-language requests to a supported case, and a deterministic evaluator compares the changed files with the pinned GitHub Actions trigger. The maintainer decides what happens next in the same thread.
 
-[Evidence and verification](docs/live-run.md) · [Original maintainer report](https://github.com/learn-ukrainian/learn-ukrainian.github.io/issues/1641) · [Switch quickstart](https://docs.switchagents.ai/switch-rooms/getting-started)
+[Public evidence replay](https://hannielvinu.github.io/Merge-Receipt/) · [Evidence and verification](docs/live-run.md) · [Original maintainer report](https://github.com/learn-ukrainian/learn-ukrainian.github.io/issues/1641) · [Switch quickstart](https://docs.switchagents.ai/switch-rooms/getting-started)
 
 ## Start with the evidence
 
