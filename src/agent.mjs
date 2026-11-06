@@ -26,8 +26,7 @@ function connect() {
   address.searchParams.set('rooms', room);
   address.searchParams.set('filter', 'addressed');
   if (cursor !== undefined) {
-    address.searchParams.set('start_from', 'resume');
-    address.searchParams.set('start_at', String(cursor));
+    address.searchParams.set('start_from', String(cursor));
   }
   if (generation !== undefined) address.searchParams.set('expected_generation', String(generation));
 

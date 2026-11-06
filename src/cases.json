@@ -1,6 +1,7 @@
 [
   {
     "id": "LU-1638",
+    "label": "code-change control, two source and test files",
     "repo": "learn-ukrainian/learn-ukrainian.github.io",
     "pull": 1638,
     "base": "7dfdbeaca72f46d53720040993d5907040bb05dc",
@@ -30,6 +31,7 @@
   },
   {
     "id": "LU-1640",
+    "label": "first blocked docs-only pull request, five documentation paths",
     "repo": "learn-ukrainian/learn-ukrainian.github.io",
     "pull": 1640,
     "base": "5377f5d577a9fe218f879d6636213a0a5717a758",
@@ -62,6 +64,7 @@
   },
   {
     "id": "LU-1642",
+    "label": "second blocked docs-only pull request, four documentation paths",
     "repo": "learn-ukrainian/learn-ukrainian.github.io",
     "pull": 1642,
     "base": "a33eff5951908143d1efd1dd2e680d7342ea1eef",

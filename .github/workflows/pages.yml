@@ -1,4 +1,4 @@
-name: Test and publish public replay
+name: Test Merge Receipt
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: merge-receipt-pages
+  group: merge-receipt-test-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   verify:
@@ -19,23 +19,3 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      - run: |
-          mkdir -p dist/src
-          cp web/* dist/
-          cp src/diagnose.mjs src/cases.json dist/src/
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist
-  deploy:
-    needs: verify
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Publish static replay
-        id: deployment
-        uses: actions/deploy-pages@v4
