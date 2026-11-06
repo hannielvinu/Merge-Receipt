@@ -10,6 +10,8 @@ The workflow ran through Switch Core 0.31.0 and the bundled Mattermost bridge. T
 
 The transcript is a replay of a resolved GitHub incident. The agent ran live in the Switch room and no GitHub write credentials were used.
 
+The submission video also shows a separate run from the Mattermost browser interface. A local maintainer account sent the natural-language request, the control command and the hold directly in the channel and thread. The video uses the actual screen captures from that run, edited with narration and close-ups for readability.
+
 - [Reported required check and blocker](https://github.com/learn-ukrainian/learn-ukrainian.github.io/issues/1641)
 - [Blocked PR](https://github.com/learn-ukrainian/learn-ukrainian.github.io/pull/1640/files)
 - [Control PR](https://github.com/learn-ukrainian/learn-ukrainian.github.io/pull/1638/files)
